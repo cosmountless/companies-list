@@ -1,3 +1,4 @@
 # IDE Project files
 /.idea
 /node_modules
+/dist
