@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { companyFormActions } from '../actions'
 import { Link } from 'react-router-dom'
+import CompanyForm from '../components/company-form/company-form'
 
 /**
  * Поиск компании по id
@@ -37,9 +38,9 @@ const EditCompany = ({ companies, submitForm, match: { params: params } }) => {
     content = (
       <div>
         <div>
-          <Link to={`/company/${company.id}`}>Назад к странице компании</Link>
+          <Link to={`/company/${company.id}`}>К странице компании '{company.name}'</Link>
         </div>
-        Страница редактирования компании.
+        <CompanyForm company={company} submitForm={submitForm} />
       </div>
     )
   }
@@ -54,7 +55,7 @@ function mapStateToProps (state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    submitForm:  (formData) => dispatch(companyFormActions.submitFormAction()),
+    submitForm: (formData) => dispatch(companyFormActions.submitFormAction(formData)),
   }
 }
 
