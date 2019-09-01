@@ -1,0 +1,12 @@
+.wrapper {
+  padding: 10px;
+  background: rgba(94, 204, 247, 0.24);
+  cursor: pointer;
+  border-radius: 5px;
+  &:hover {
+    background: rgba(94, 204, 247, 0.51);
+  }
+  + .wrapper {
+    margin-top: 10px;
+  }
+}

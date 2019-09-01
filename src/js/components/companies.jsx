@@ -1,5 +1,5 @@
 import React from 'react'
-import Company from './company'
+import Company from './company/company'
 
 /**
  * Компонент списка команий.

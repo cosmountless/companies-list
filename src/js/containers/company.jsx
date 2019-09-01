@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { withRouter, Redirect, Link } from 'react-router-dom'
+import { Redirect, Link } from 'react-router-dom'
 
 /**
  * Поиск компании по id
@@ -34,21 +34,15 @@ const Company = ({ companies, match: { params: params } }) => {
       </div>
     )
   } else {
+    const { id, name, ogrn, type, registration_date, is_active } = company;
     content = (
       <div>
         <Link to='/' children='На главную' />
         <div>
-          {
-            (() => {
-              const { id, name, ogrn, type, registration_date, is_active } = company;
-              return (
-                <div>
-                  <div>{id} {name} {ogrn} {type} {registration_date} {!is_active && 'не'} активна</div>
-                  <Link to={`/company/edit/${id}`} children='Редактировать' />
-                </div>
-              )
-            })()
-          }
+          <div>
+            <div>{id} {name} {ogrn} {type} {registration_date} {!is_active && 'не'} активна</div>
+            <Link to={`/company/edit/${id}`} children='Редактировать' />
+          </div>
         </div>
       </div>
     )
@@ -62,4 +56,4 @@ function mapStateToProps(state) {
   }
 }
 
-export default withRouter(connect(mapStateToProps)(Company))
+export default connect(mapStateToProps)(Company)

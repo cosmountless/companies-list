@@ -1,10 +1,11 @@
 import React, { useEffect } from 'react'
-import { Route, Switch, withRouter } from 'react-router-dom'
+import { Route, Switch } from 'react-router-dom'
 import App from './containers/app'
 import Company from './containers/company'
 import Edit from './containers/edit'
 import { connect } from 'react-redux'
 import { companiesActions } from './actions'
+import styles from './root.scss'
 
 /**
  * Корневой компонент.
@@ -20,20 +21,22 @@ const Root = ({ requestCompanies, isFetched }) => {
     }
   }, []);
   return (
-    <div>
-      <div>List companies app</div>
-      {isFetched
-        ? (
-            <Switch>
-              <Route exact path='/' component={App} />
-              <Route path='/company/edit/:id' component={Edit} />
-              <Route path='/company/:id' component={Company} />
-            </Switch>
+    <div className={styles.limit}>
+      <div className={styles.reducer}>
+        <h1>List companies app</h1>
+        {isFetched
+          ? (
+              <Switch>
+                <Route exact path='/' component={App} />
+                <Route path='/company/edit/:id' component={Edit} />
+                <Route path='/company/:id' component={Company} />
+              </Switch>
+            )
+          : (
+            <div>Загрузка компаний...</div>
           )
-        : (
-          <div>Загрузка компаний...</div>
-        )
-      }
+        }
+      </div>
     </div>
   )
 };
@@ -50,4 +53,4 @@ function mapDispatchToProps (dispatch) {
   }
 }
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Root))
+export default connect(mapStateToProps, mapDispatchToProps)(Root)

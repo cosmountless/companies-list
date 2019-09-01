@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import styles from './app.scss';
 import { connect } from 'react-redux'
 import Companies from '../components/companies'
 import { withRouter } from 'react-router-dom'
@@ -11,7 +10,7 @@ import { withRouter } from 'react-router-dom'
  * @return {ReactElement}
  */
 const App = ({ companies }) => (
-  <div className={styles.wrapper}>
+  <div>
     <Companies companies={companies} />
   </div>
 )
@@ -23,4 +22,4 @@ function mapStateToProps (state) {
   }
 }
 
-export default withRouter(connect(mapStateToProps)(App));
+export default connect(mapStateToProps)(App);
