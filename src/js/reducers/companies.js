@@ -14,6 +14,15 @@ export const reducer = (state = initialState, action) => {
       return { ...state, items: action.data, isFetching: false, isFetched: true };
     case COMPANIES_TYPES.FAILURE:
       return { ...state, isFetching: false }
+    case COMPANIES_TYPES.PUT:
+      const newCompanies = state.items.map(item => {
+        let company = item;
+        if (company.id === action.data.id) {
+          company = action.data;
+        }
+        return company
+      });
+      return { ...state, items: newCompanies}
   }
   return state;
 };

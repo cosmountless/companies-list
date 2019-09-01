@@ -3,7 +3,7 @@ import { Field, reduxForm } from 'redux-form'
 import styles from './company-form.scss'
 import DatePicker from '../date-picker/date-picker'
 import Select from '../select/select'
-
+import { withRouter } from 'react-router-dom'
 /**
  * Компонент формы компании.
  * @param {Object} company Данные компании для инициализации формы.
@@ -11,21 +11,17 @@ import Select from '../select/select'
  * @param {Function} handleSubmit Обработчик подтверждения формы redux-form prop.
  * @param {boolean} submitting Признак процесса подтверждения формы redux-form prop.
  * @param {Function} initialize Функция инициализации данных формы redux-form prop.
+ * @param {Object} history Объект истории.
  * @return {ReactElement}
  */
-const CompanyForm = ({ company, submitForm, handleSubmit, submitting, initialize }) => {
+const CompanyForm = ({ company, submitForm, handleSubmit, submitting, initialize, history }) => {
   useEffect(() => {
     initialize(company);
   }, []);
   return (
     <form>
       <div>
-        <label className={styles.label} htmlFor='id'>Идентификатор: </label>
-        <Field
-          name='id'
-          component='input'
-          type='text'
-        />
+        <div className={styles.label}>Идентификатор:</div> {company.id}
       </div>
       <div>
         <label className={styles.label} htmlFor='name'>Наименование: </label>
@@ -74,7 +70,7 @@ const CompanyForm = ({ company, submitForm, handleSubmit, submitting, initialize
       </div>
         <button
           type='submit'
-          onClick={handleSubmit(submitForm)}
+          onClick={handleSubmit((data) => submitForm(data, history))}
           disabled={submitting}
         >
           Подтвердить
@@ -83,4 +79,4 @@ const CompanyForm = ({ company, submitForm, handleSubmit, submitting, initialize
   )
 };
 
-export default reduxForm({ form: 'company-form' })(CompanyForm)
+export default withRouter(reduxForm({ form: 'company-form' })(CompanyForm))

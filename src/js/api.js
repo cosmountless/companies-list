@@ -11,7 +11,7 @@ const createApi = () => {
     timeout: 20000,
   });
   const getCompanies = () => api.get('companies');
-  const putCompany = (data) => api.post('company', data);
+  const putCompany = (data) => api.put('company', data);
   return {
     getCompanies,
     putCompany,

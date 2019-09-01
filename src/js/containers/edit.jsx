@@ -55,7 +55,7 @@ function mapStateToProps (state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    submitForm: (formData) => dispatch(companyFormActions.submitFormAction(formData)),
+    submitForm: (formData, history) => dispatch(companyFormActions.submitFormAction(formData, history)),
   }
 }
 

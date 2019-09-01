@@ -1,4 +1,4 @@
-export const FORM_TYPES = {
+export const COMPANY_FORM_TYPES = {
   SUBMIT: 'SUBMIT',
   SUCCESS: 'SUCCESS',
   FAILURE: 'FAILURE',
@@ -8,4 +8,5 @@ export const COMPANIES_TYPES = {
   REQUEST: 'REQUEST',
   SUCCESS: 'SUCCESS',
   FAILURE: 'FAILURE',
-}
+  PUT: 'PUT',
+};
