@@ -1,40 +1,18 @@
-const initialState = [
-  {
-    id: 1,
-    name: 'Company name',
-    ogrn: 123123123,
-    type: 'ИП',
-    registration_date: '22.01.18',
-    is_active: true,
-  },
-  {
-    id: 2,
-    name: 'Company name',
-    ogrn: 123123123,
-    type: 'ООО',
-    registration_date: '22.01.18',
-    is_active: false,
-  },
-  {
-    id: 3,
-    name: 'Company name',
-    ogrn: 123123123,
-    type: 'ИП',
-    registration_date: '22.01.18',
-    is_active: true,
-  }
-];
+import { COMPANIES_TYPES } from '../types'
+
+const initialState = {
+  items: [],
+  isFetching: false,
+};
 
 export const reducer = (state = initialState, action) => {
   switch(action.type) {
-    case 'SET_COMPANY_DATA':
-      const newCompanies = state.companies.map(company => {
-        if (company.id === action.data.id) {
-          company = company.data;
-        }
-        return company;
-      });
-      return { ...state, newCompanies }
+    case COMPANIES_TYPES.REQUEST:
+      return { ...state, isFetching: true };
+    case COMPANIES_TYPES.SUCCESS:
+      return { ...state, items: action.data, isFetching: false };
+    case COMPANIES_TYPES.FAILURE:
+      return { ...state, isFetching: false }
   }
-  return state
+  return state;
 }

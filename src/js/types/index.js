@@ -1,3 +1,11 @@
 export const FORM_TYPES = {
-  submit: 'SUBMIT',
+  SUBMIT: 'SUBMIT',
+  SUCCESS: 'SUCCESS',
+  FAILURE: 'FAILURE',
 };
+
+export const COMPANIES_TYPES = {
+  REQUEST: 'REQUEST',
+  SUCCESS: 'SUCCESS',
+  FAILURE: 'FAILURE',
+}

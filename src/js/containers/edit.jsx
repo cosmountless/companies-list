@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { submitAction } from '../actions'
+import { companyFormActions } from '../actions'
 
 const EditCompany = () => (
   <div>Edit company data route</div>
@@ -14,7 +14,7 @@ function mapStateToProps (state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    submitForm:  (formData) => dispatch(submitAction()),
+    submitForm:  (formData) => dispatch(companyFormActions.submitFormAction()),
   }
 }
 
