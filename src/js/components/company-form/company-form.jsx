@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { Field, reduxForm } from 'redux-form'
 import styles from './company-form.scss'
 import DatePicker from '../date-picker/date-picker'
+import Select from '../select/select'
 
 /**
  * Компонент формы компании.
@@ -46,9 +47,14 @@ const CompanyForm = ({ company, submitForm, handleSubmit, submitting, initialize
         <label className={styles.label} htmlFor='type'>Тип компании: </label>
         <Field
           name='type'
-          component='input'
+          component={({ input: { onChange, value }, children }) => (
+            <Select onChange={onChange} value={value} children={children} />
+          )}
           type='text'
-        />
+        >
+          <option value='ИП'>ИП</option>
+          <option value='ООО'>ООО</option>
+        </Field>
       </div>
       <div>
         <label className={styles.label} htmlFor='registration_date'>Дата регистрации: </label>
