@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Redirect, Link } from 'react-router-dom'
+import styles from './company.scss'
 
 /**
  * Поиск компании по id
@@ -27,9 +28,7 @@ const Company = ({ companies, match: { params: params } }) => {
   if (typeof company === 'undefined') {
     content = (
       <div>
-        <div>
-          <Link to='/' children='На главную' replace />
-        </div>
+        <Link className={styles['like-button']} to='/' children='На главную' replace />
         <div>Компании не найдено</div>
       </div>
     )
@@ -37,12 +36,15 @@ const Company = ({ companies, match: { params: params } }) => {
     const { id, name, ogrn, type, registration_date, is_active } = company;
     content = (
       <div>
-        <Link to='/' children='На главную' />
-        <div>
-          <div>
-            <div>{id} {name} {ogrn} {type} {registration_date} {!is_active && 'не'} активна</div>
-            <Link to={`/company/edit/${id}`} children='Редактировать' />
-          </div>
+        <Link className={styles['like-button']} to='/' children='На главную' />
+        <div className={styles.company}>
+          <div>id: {id}</div>
+          <div>Название: {name}</div>
+          <div>Огрн: {ogrn}</div>
+          <div>Тип компании: {type}</div>
+          <div>Дата регистрации: {registration_date}</div>
+          <div>Стаутус: {!is_active && 'не '}активна</div>
+          <Link className={styles['like-button']} to={`/company/edit/${id}`} children='Редактировать' />
         </div>
       </div>
     )

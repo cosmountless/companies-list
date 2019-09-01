@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { Route, Switch } from 'react-router-dom'
 import App from './containers/app'
-import Company from './containers/company'
+import Company from './containers/company/company'
 import Edit from './containers/edit'
 import { connect } from 'react-redux'
 import { companiesActions } from './actions'
