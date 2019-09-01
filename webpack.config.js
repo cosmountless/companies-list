@@ -1,7 +1,7 @@
 const path = require('path');
 const isProduction = process.env.NODE_ENV === 'production';
 const env = isProduction ? 'production': 'development';
-
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const rules = [
   {
     test: /\.jsx?$/,
@@ -32,6 +32,13 @@ const rules = [
   },
 ];
 
+const plugins = [
+  new HtmlWebpackPlugin({
+    template: './public/index.html',
+    inject: false,
+  })
+];
+
 module.exports = {
   entry: './src/js/index.js',
   mode: env,
@@ -41,9 +48,17 @@ module.exports = {
   module: {
     rules: rules,
   },
+  plugins: plugins,
   devtool: isProduction ? 'source-map' : 'inline-source-map',
   output: {
     filename: 'bundle.js',
-    path: path.resolve(__dirname, 'dist')
-  }
+    path: path.resolve(__dirname, 'dist'),
+  },
+  devServer: {
+    port: 3000,
+    historyApiFallback: {
+      historyApiFallback: true,
+    },
+    writeToDisk: true
+  },
 };

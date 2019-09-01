@@ -6,8 +6,7 @@
   "author": "cosmountless",
   "license": "MIT",
   "scripts": {
-    "dev": "NODE_ENV=development webpack --progress=true",
-    "watch": "yarn dev --watch",
+    "dev": "NODE_ENV=development webpack-dev-server --progress=true",
     "build": "NODE_ENV=production webpack --progress=true"
   },
   "devDependencies": {
@@ -19,12 +18,14 @@
     "babel-loader": "^8.0.6",
     "core-js": "^3.2.1",
     "css-loader": "^3.2.0",
+    "html-webpack-plugin": "^3.2.0",
     "node-sass": "^4.12.0",
     "redux-devtools-extension": "^2.13.8",
     "sass-loader": "^7.3.1",
     "style-loader": "^1.0.0",
     "webpack": "^4.39.3",
-    "webpack-cli": "^3.3.7"
+    "webpack-cli": "^3.3.7",
+    "webpack-dev-server": "^3.8.0"
   },
   "dependencies": {
     "apisauce": "^1.1.0",
@@ -33,6 +34,7 @@
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "react-redux": "^7.1.1",
+    "react-router-dom": "^5.0.1",
     "redux": "^4.0.4",
     "redux-form": "^8.2.6",
     "redux-saga": "^1.0.5"

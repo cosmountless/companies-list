@@ -1,15 +1,15 @@
 import React from 'react'
+import Company from './company'
 
 /**
  * Компонент списка команий.
  * @param {Array} companies Данные компаний.
+ * @return {ReactElement}
  */
 const Companies = ({ companies = [] }) => (
   <div>
-    {companies.map(({ id, name, ogrn, type, registration_date, is_active }) => (
-      <div key={id}>
-        {id} {name} {ogrn} {type} {registration_date} {!is_active && 'не'} активна
-      </div>
+    {companies.map((company, index) => (
+      <Company key={index} company={company} />
     ))}
   </div>
 );

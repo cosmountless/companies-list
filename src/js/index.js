@@ -1,4 +1,3 @@
-import App from './containers/app'
 import React from 'react'
 import { render } from 'react-dom'
 import configureStore from './configure-store'
@@ -7,6 +6,8 @@ import { Provider } from 'react-redux'
 import { createSagaWatcher } from './sagas'
 import reducers from './reducers/index'
 import apiMock from './api-mock'
+import { BrowserRouter as Router } from 'react-router-dom'
+import Root from './root'
 
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -15,9 +16,11 @@ document.addEventListener('DOMContentLoaded', () => {
   apiMock(api);
   const store = configureStore(reducers, createSagaWatcher(api));
   const app = (
-    <Provider store={store}>
-      <App />
-    </Provider>
+    <Router>
+      <Provider store={store}>
+        <Root />
+      </Provider>
+    </Router>
   );
   render(app, container);
 });

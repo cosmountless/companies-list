@@ -1,14 +1,54 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { companyFormActions } from '../actions'
+import { Link } from 'react-router-dom'
 
-const EditCompany = () => (
-  <div>Edit company data route</div>
-);
+/**
+ * Поиск компании по id
+ * @param {Array} companies Компании.
+ * @param {number} companyId Идентификатор компании.
+ */
+const getCompanyById = (companies, companyId) => {
+  return companies.find(company => {
+    return company.id === Number(companyId)
+  })
+};
+
+/**
+ * Страница компаний.
+ * @param {Object} props Свойства компонента.
+ * @param {Object} props.match Данные о роуте.
+ * @param {Object} props.match.params.id Идентификатор компании.
+ * @param {Object} props.companies Данные компаний.
+ */
+const EditCompany = ({ companies, submitForm, match: { params: params } }) => {
+  const company = getCompanyById(companies, Number(params.id));
+  let content;
+  if (typeof company === 'undefined') {
+    content = (
+      <div>
+        <div>
+          <Link to='/'>На главную</Link>
+        </div>
+        <div>Не найдена такая компания для редактирования</div>
+      </div>
+    )
+  } else {
+    content = (
+      <div>
+        <div>
+          <Link to={`/company/${company.id}`}>Назад к странице компании</Link>
+        </div>
+        Страница редактирования компании.
+      </div>
+    )
+  }
+  return content;
+};
 
 function mapStateToProps (state) {
   return {
-    companies: state.companies,
+    companies: state.companies.items,
   }
 }
 
