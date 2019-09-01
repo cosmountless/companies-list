@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import { Field, reduxForm } from 'redux-form'
 import styles from './company-form.scss'
+import DatePicker from '../date-picker/date-picker'
 
 /**
  * Компонент формы компании.
@@ -53,7 +54,7 @@ const CompanyForm = ({ company, submitForm, handleSubmit, submitting, initialize
         <label className={styles.label} htmlFor='registration_date'>Дата регистрации: </label>
         <Field
           name='registration_date'
-          component='input'
+          component={DatePicker}
           type='text'
         />
       </div>

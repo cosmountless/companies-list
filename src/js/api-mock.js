@@ -6,7 +6,7 @@ const requestCompaniesData = [
     name: 'Company name',
     ogrn: 123123123,
     type: 'ИП',
-    registration_date: '22.01.18',
+    registration_date: '22.01.2018',
     is_active: true,
   },
   {
@@ -14,7 +14,7 @@ const requestCompaniesData = [
     name: 'Company name',
     ogrn: 123123123,
     type: 'ООО',
-    registration_date: '22.01.18',
+    registration_date: '22.01.2017',
     is_active: false,
   },
   {
@@ -22,7 +22,7 @@ const requestCompaniesData = [
     name: 'Company name',
     ogrn: 123123123,
     type: 'ИП',
-    registration_date: '22.01.18',
+    registration_date: '22.01.1998',
     is_active: true,
   },
 ];

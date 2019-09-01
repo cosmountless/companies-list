@@ -2,6 +2,8 @@ const path = require('path');
 const isProduction = process.env.NODE_ENV === 'production';
 const env = isProduction ? 'production': 'development';
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ContextReplacementPlugin = require('webpack').ContextReplacementPlugin;
+
 const rules = [
   {
     test: /\.jsx?$/,
@@ -36,7 +38,11 @@ const plugins = [
   new HtmlWebpackPlugin({
     template: './public/index.html',
     inject: false,
-  })
+  }),
+  new ContextReplacementPlugin(
+    /date\-fns[\/\\]/,
+    new RegExp(`[/\\\\\]ru[/\\\\\]`)
+  )
 ];
 
 module.exports = {
